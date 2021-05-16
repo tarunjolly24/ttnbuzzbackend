@@ -15,7 +15,7 @@ exports.generateUserToken=function generateUserToken(req, res) {
     })
     // console.log(accessToken);
     res.cookie("jwt", accessToken);
-    res.redirect(`http://localhost:3000/home`);
+    res.redirect(`http://localhost:3000/profile`);
 }
 
 
@@ -28,11 +28,11 @@ exports.verify=function verify (req, res, next){
     console.log(req.headers);
      let accessToken = req.headers.authorization
     if (!accessToken){
-        return res.status(403).send()
+        return res.status(403).send("unauthorized")
     }
-
+    // console.log("accesstoken",accessToken);
+   
     let payload
-    
     try{
         payload = jwt.verify(accessToken,'heymysecret' );
         console.log("payload",payload);
@@ -40,6 +40,10 @@ exports.verify=function verify (req, res, next){
         next()
     }
     catch(e){
-        return res.status(401).send()
+        return res.status(401).send("unauthorized")
     }
 }
+
+
+
+
