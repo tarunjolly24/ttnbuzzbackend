@@ -34,4 +34,24 @@ exports.anyUserProfile = async function (profileId) {
 }
 
 
-
+exports.updateUserProfile=async function(userDetailsToUpdate){
+    
+    try{
+    const userProfileId=userDetailsToUpdate._id;
+    const getUser=await profileModel.findOne({_id:userProfileId});
+    console.log(getUser);
+    getUser.firstName=userDetailsToUpdate.firstName;
+    getUser.lastName=userDetailsToUpdate.lastName;
+    getUser.dob=userDetailsToUpdate.dob;
+    getUser.gender=userDetailsToUpdate.gender;
+    getUser.city=userDetailsToUpdate.city;
+    getUser.state=userDetailsToUpdate.state;
+    getUser.profileImage=userDetailsToUpdate.profileImage;
+    getUser.coverImage=userDetailsToUpdate.coverImage;
+    return await getUser.save();
+    }
+    catch(e){
+        return new Error("updation failed");
+    }
+    
+}

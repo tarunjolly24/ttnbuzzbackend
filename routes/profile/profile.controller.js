@@ -16,11 +16,21 @@ exports.getAnyProfile = async function (req, res) {
 
 
         const profileId = req.query.profileId;
-        console.log('line 12', req.query);
+        // console.log('line 12', req.query);
         const userProfile = await profileService.anyUserProfile(profileId);
         res.send(userProfile);
     }
     catch (e) {
         res.send('no profile found');
+    }
+}
+
+exports.updateUserProfile=async function(req,res){
+    try{
+        const userDetailsToUpdate=req.body.updatedDetails;
+        const userUpdatedProfile=await profileService.updateUserProfile(userDetailsToUpdate);
+        res.send('Successfully Updated');
+    }catch(e){
+        res.send('update failed');
     }
 }
