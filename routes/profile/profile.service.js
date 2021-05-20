@@ -17,11 +17,11 @@ exports.getProfile = async function (profileId) {
 }
 
 exports.anyUserProfile = async function (profileId) {
-    console.log('anyUserProfileId',profileId);
+    // console.log('anyUserProfileId',profileId);
 
     try {
         let data = await profileModel.findOne({ _id: profileId });
-        console.log('data 24', data);
+        // console.log('data 24', data);
         if (data) {
             return data;
         } else {
@@ -40,7 +40,7 @@ exports.updateUserProfile=async function(userDetailsToUpdate){
     try{
     const userProfileId=userDetailsToUpdate._id;
     const getUser=await profileModel.findOne({_id:userProfileId});
-    console.log(getUser);
+    // console.log(getUser);
     getUser.firstName=userDetailsToUpdate.firstName;
     getUser.lastName=userDetailsToUpdate.lastName;
     getUser.dob=userDetailsToUpdate.dob;

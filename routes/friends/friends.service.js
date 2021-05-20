@@ -4,7 +4,7 @@ exports.getallfriends = async function (userprofileId) {
 
     try {
         const allfriends = await profileModel.find({ _id: userprofileId }).populate('friendsList').exec();
-        console.log(allfriends);
+        // console.log(allfriends);
         return allfriends.friendsList;
     } catch (e) {
         throw new Error("something went wrong to get all friends");
@@ -32,7 +32,7 @@ exports.sentrequest = async function (userProfileId, receiverProfileId) {
 exports.showsuggestions = async function (userProfileId) {
     try {
         const user = await profileModel.findOne({ _id: userProfileId }).lean();
-        // console.log('user',user);
+        console.log('user',user);
         const friendlist = user.friendsList;
         // console.log(friendlist);
         friendlist.push(userProfileId);
@@ -40,7 +40,8 @@ exports.showsuggestions = async function (userProfileId) {
         return suggestions;
 
     } catch (e) {
-        throw new Error("error in suggestion query");
+        console.log('erorr line 43',e);
+        throw new Error(e);
     }
 }
 
@@ -66,14 +67,14 @@ exports.acceptRequest=async function(userProfileId,receiverProfileId){
     try{
         // console.log(userProfileId,receiverProfileId)
         const userA=await profileModel.findOne({_id:userProfileId});
-        console.log('userA',userA);
+        // console.log('userA',userA);
         userA.friendsList.push(receiverProfileId);
         let idx=userA.requestList.indexOf(receiverProfileId);
         userA.requestList.splice(idx,1);
-        console.log('userA see',userA);
+        // console.log('userA see',userA);
 
         const userB=await profileModel.findOne({_id:receiverProfileId});
-        console.log('userB',userB);
+        // console.log('userB',userB);
 
         userB.friendsList.push(userProfileId);
         idx=userB.requestSent.indexOf(userProfileId);

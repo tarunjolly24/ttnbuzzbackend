@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 
 //generate token
 exports.generateUserToken=function generateUserToken(req, res) {
-    console.log(req.user);
+    // console.log(req.user);
     // console.log(accessToken);
     let payload = {user:req.user}
     let accessToken = jwt.sign(payload, "heymysecret", {
@@ -25,7 +25,7 @@ exports.generateUserToken=function generateUserToken(req, res) {
 
 //verify token
 exports.verify=function verify (req, res, next){
-    console.log(req.headers);
+    // console.log(req.headers);
      let accessToken = req.headers.authorization
      accessToken=accessToken.split("=")[1];
     if (!accessToken){
@@ -36,7 +36,7 @@ exports.verify=function verify (req, res, next){
     let payload
     try{
         payload = jwt.verify(accessToken,'heymysecret' );
-        console.log("payload",payload);
+        // console.log("payload",payload);
         req.user=payload;
         next()
     }

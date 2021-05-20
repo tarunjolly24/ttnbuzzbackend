@@ -19,7 +19,7 @@ exports.getAnyProfile = async function (req, res) {
         // console.log('line 19 profileID',profileId);
         // console.log('line 12', req.query);
         const userProfile = await profileService.anyUserProfile(profileId);
-        console.log('userProfile',userProfile);
+        // console.log('userProfile',userProfile);
         res.send(userProfile);
     }
     catch (e) {

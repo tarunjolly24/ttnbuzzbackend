@@ -3,7 +3,7 @@ const friendService = require('./friends.service');
 exports.getallfriends = async function (req, res) {
     try {
         let userProfileId = req.user.user.profileId;
-        console.log(userProfileId);
+        // console.log(userProfileId);
         const friendList = await friendService.getallfriends(userProfileId);
         res.send(friendList);
     }
@@ -14,7 +14,7 @@ exports.getallfriends = async function (req, res) {
 
 
 exports.sentrequest = async function (req, res) {
-    console.log(req.body);
+    // console.log(req.body);
     try {
         let userProfileId = req.user.user.profileId;
         let receiverProfileId = req.body.receiverProfileId;
@@ -28,11 +28,11 @@ exports.sentrequest = async function (req, res) {
 }
 exports.showsuggestions = async function (req, res) {
     try {
-        // console.log(req.user);
+        console.log('line 31',req.user);
         let userProfileId = req.user.user.profileId;
-        // console.log('userProfileId',userProfileId);
+        console.log('userProfileId',userProfileId);
         const response = await friendService.showsuggestions(userProfileId);
-        // console.log(response);
+        console.log('line 35',response);
         res.send(response);
     } catch (e) {
         res.send(e);

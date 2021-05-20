@@ -3,12 +3,21 @@ const {passport}=require('./Passport/passport');
 const {generateUserToken,verify}=require('./auth/token');
 const {mongoose}=require('./Database/connection');
 const dotenv = require('dotenv');
+const formData = require('express-form-data')
+
+var cloudinary = require('cloudinary');
+cloudinary.config({ 
+    cloud_name: 'ddcgdnhqp', 
+    api_key: '394153769529545', 
+    api_secret: 'J0GftJkIy8CNtr99kasKroIwmC0' 
+  });
 dotenv.config();
 var cors = require('cors')
 const port=5000;
 //process.env.PORT
 const app=express();
 app.use(express.json())
+app.use(formData.parse())
 
 app.use(passport.initialize());
 app.use(cors())
@@ -23,7 +32,21 @@ app.use('/post',postRoute);
 app.use('/profile',profileRoute);
 app.use('/friends',friendsRoute);
 
+app.post('/image-upload', (req, res) => {
+  const values = Object.values(req.files)
+  // console.log(values);
+  const promises = values.map(image => cloudinary.uploader.upload(image.path))
+  
+  Promise
+    .all(promises)
+    .then(results => res.json(results))
+    .catch((err) => {
+      // console.log('err line 44',err)
+      res.status(400).json(err)})
 
+
+  })
+  
 
 
 
@@ -31,7 +54,7 @@ app.use('/friends',friendsRoute);
 
 
 app.get('/',(req,res)=>{
-    console.log('slash',req.user);
+    // console.log('slash',req.user);
     res.send('hey');    
 })
 // app.get('/profile',(req,res)=>{
