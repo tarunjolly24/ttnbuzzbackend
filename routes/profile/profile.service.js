@@ -4,7 +4,7 @@ exports.getProfile = async function (profileId) {
     // console.log(profileId);
     try {
         let data = await profileModel.findOne({ _id: profileId });
-        console.log('data', data);
+        // console.log('data', data);
         if (data) {
             return data;
         } else {
@@ -17,10 +17,11 @@ exports.getProfile = async function (profileId) {
 }
 
 exports.anyUserProfile = async function (profileId) {
-    // console.log(profileId);
+    console.log('anyUserProfileId',profileId);
+
     try {
         let data = await profileModel.findOne({ _id: profileId });
-        console.log('data', data);
+        console.log('data 24', data);
         if (data) {
             return data;
         } else {

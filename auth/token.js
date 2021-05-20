@@ -27,6 +27,7 @@ exports.generateUserToken=function generateUserToken(req, res) {
 exports.verify=function verify (req, res, next){
     console.log(req.headers);
      let accessToken = req.headers.authorization
+     accessToken=accessToken.split("=")[1];
     if (!accessToken){
         return res.status(403).send("unauthorized")
     }

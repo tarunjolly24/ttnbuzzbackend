@@ -28,8 +28,11 @@ exports.sentrequest = async function (req, res) {
 }
 exports.showsuggestions = async function (req, res) {
     try {
+        // console.log(req.user);
         let userProfileId = req.user.user.profileId;
+        // console.log('userProfileId',userProfileId);
         const response = await friendService.showsuggestions(userProfileId);
+        // console.log(response);
         res.send(response);
     } catch (e) {
         res.send(e);

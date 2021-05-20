@@ -32,7 +32,7 @@ exports.sentrequest = async function (userProfileId, receiverProfileId) {
 exports.showsuggestions = async function (userProfileId) {
     try {
         const user = await profileModel.findOne({ _id: userProfileId }).lean();
-        console.log(user);
+        // console.log('user',user);
         const friendlist = user.friendsList;
         // console.log(friendlist);
         friendlist.push(userProfileId);
