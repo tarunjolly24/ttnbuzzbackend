@@ -32,6 +32,7 @@ passport.use(new GoogleStrategy({
                     email:profile._json.email,
                     profileImage:'https://res.cloudinary.com/ddcgdnhqp/image/upload/v1621531829/uxz2n8ntfpk2typowdig.jpg',
                     coverImage:'https://res.cloudinary.com/ddcgdnhqp/image/upload/v1621531988/nymoy1gqxspkji8x8ktn.png',
+                    role:updatedUser.role,
                 }
                 const newUserProfile=new profileModel(userProfile);
                 const profileOfUser= await newUserProfile.save();

@@ -12,6 +12,9 @@ const profileSchema = new Schema({
     email: {
         type: String,
     },
+    role:{
+        type:String,
+    },
     about: {
         type: String,
     },
