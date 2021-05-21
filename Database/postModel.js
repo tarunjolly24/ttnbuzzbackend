@@ -18,11 +18,7 @@ const postSchema = new Schema({
     },
     likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'profile' }],
     dislikes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'profile' }],
-    flagged: {
-        type: Number,
-        default: 0
-    }
-
+    flagged:[{ type: mongoose.Schema.Types.ObjectId, ref: 'profile' }],
 
 })
 

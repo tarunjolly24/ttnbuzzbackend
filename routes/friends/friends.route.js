@@ -23,5 +23,8 @@ router.get('/requestsent',verify,friendController.allrequestSent);
 router.post('/acceptrequest',verify,friendController.acceptRequest);
 
 
+//to reject a friend request
+router.post('/rejectrequest',verify,friendController.rejectrequest);
+
 
 module.exports=router
