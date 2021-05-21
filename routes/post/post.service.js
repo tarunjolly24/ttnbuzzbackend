@@ -31,7 +31,7 @@ exports.createpost=async function(userProfileId,data){
 // flag  a post 
 exports.flagpost=async function(userProfileId,postId){
     const post=await postModel.findOne({_id:postId});
-    post.flagged.push(userProfileId);
+    post.flagged=1
     const updatedPost= await post.save();
     return updatedPost;
 }
@@ -71,7 +71,7 @@ exports.dislikepost=async function(userProfileId,postId){
 //make a post unflagged only by moderator
 exports.unflagpost=async function(userProfileId,postId){
     const post=await postModel.findOne({_id:postId});
-    post.flagged.splice(0,post.flagged.length);
+    post.flagged=0;
     const updatedPost= await post.save();
     return updatePost;
 }

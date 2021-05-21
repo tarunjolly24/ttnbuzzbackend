@@ -10,7 +10,7 @@ exports.getallcomment=async (req,res)=>{
 }
 
 
-exports.createcomment=(req,res)=>{
+exports.createcomment=async (req,res)=>{
     try{
         const userProfileId=req.user.user.profileId;
         const postId=req.body.postId;

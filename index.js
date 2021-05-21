@@ -26,11 +26,13 @@ const loginRoute=require('./routes/login/login.route');
 const postRoute=require('./routes/post/post.route');
 const profileRoute=require('./routes/profile/profile.route');
 const friendsRoute=require('./routes/friends/friends.route');
+const commentRoute=require('./routes/comment/comment.route');
 
 app.use('/',loginRoute);
 app.use('/post',postRoute);
 app.use('/profile',profileRoute);
 app.use('/friends',friendsRoute);
+app.use('/comment',commentRoute);
 
 app.post('/image-upload', (req, res) => {
   const values = Object.values(req.files)
