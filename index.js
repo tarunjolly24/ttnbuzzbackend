@@ -35,8 +35,9 @@ app.use('/friends',friendsRoute);
 app.use('/comment',commentRoute);
 
 app.post('/image-upload', (req, res) => {
+  // console.log(req.body);
   const values = Object.values(req.files)
-  // console.log(values);
+  console.log(values);
   const promises = values.map(image => cloudinary.uploader.upload(image.path))
   
   Promise

@@ -56,3 +56,15 @@ exports.updateUserProfile=async function(userDetailsToUpdate){
     }
     
 }
+
+
+exports.imageupload=async (userProfileId,imageurl)=>{
+    try{
+        const user=await profileModel.findOne({_id:userProfileId});
+        user.profileImage=imageurl;
+        const updateduser= await user.save();
+        return updateduser;
+    }catch(e){
+        return new Error(e);
+    }
+}

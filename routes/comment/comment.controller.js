@@ -13,8 +13,8 @@ exports.getallcomment=async (req,res)=>{
 exports.createcomment=async (req,res)=>{
     try{
         const userProfileId=req.user.user.profileId;
-        const postId=req.body.postId;
-        const description=req.body.description;
+        const postId=req.body.data.postId;
+        const description=req.body.data.description;
         const response=await commentServices.createcomment(userProfileId,postId,description);
         res.send(response);
 

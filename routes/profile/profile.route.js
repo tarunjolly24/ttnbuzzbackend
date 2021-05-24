@@ -6,6 +6,6 @@ router.get('/anyuserprofile',verify,profileController.getAnyProfile);
 router.post('/userprofileupdate',verify,profileController.updateUserProfile)
 
 
-
+router.post('/image-upload',verify,profileController.imageupload);
 
 module.exports=router
