@@ -2,7 +2,7 @@ const {commentModel}=require('./../../Database/commentModel');
 
 
 exports.getallcomment=async ()=>{
-    const commentArray=await commentModel.find();
+    const commentArray=await commentModel.find().populate('profileId').exec();
     return commentArray;
 }
 

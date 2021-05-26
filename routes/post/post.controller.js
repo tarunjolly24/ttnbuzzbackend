@@ -20,7 +20,8 @@ exports.getallpost = async function (req, res) {
 
     try {
         const userProfileId = req.user.user.profileId
-        const response = await postService.getallpost(userProfileId);
+        const page=req.query.page;
+        const response = await postService.getallpost(userProfileId,page);
         // console.log('getallpost',response);
         res.send(response);
     }

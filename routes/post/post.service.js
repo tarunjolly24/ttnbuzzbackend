@@ -18,7 +18,7 @@ exports.getallpost=async function(userProfileId){
     let arrayOfUser=user.friendsList;
     arrayOfUser.push(userProfileId);
     // console.log('arrayofuser',arrayOfUser);
-    const allpost=await postModel.find({createdBy:{$in:arrayOfUser}}).populate('createdBy').exec();
+    const allpost=await postModel.find({createdBy:{$in:arrayOfUser}}).populate('createdBy').skip(0).limit(100).exec();
     // console.log('print all post',allpost);
     return allpost;
     }

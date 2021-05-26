@@ -11,11 +11,11 @@ exports.generateUserToken=function generateUserToken(req, res) {
     let payload = {user:req.user}
     let accessToken = jwt.sign(payload, "heymysecret", {
         algorithm: "HS256",
-        expiresIn: 999999
+        expiresIn: '1 day'
     })
     // console.log(accessToken);
-    res.cookie("jwt", accessToken);
-    res.redirect(`http://localhost:3000/profile`);
+    res.cookie("jwt",accessToken);
+    res.redirect(`http://localhost:3000/feed`);
 }
 
 
