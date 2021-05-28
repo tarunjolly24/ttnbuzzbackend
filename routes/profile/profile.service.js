@@ -68,3 +68,18 @@ exports.imageupload=async (userProfileId,imageurl)=>{
         return new Error(e);
     }
 }
+
+exports.profileCount=async (userprofileId,receiverProfileId)=>{
+    try{
+        const user=await profileModel.findOne({_id:receiverProfileId});
+        // console.log(user);
+        user.profileCount=user.profileCount+1;
+        const updatedUser=await user.save();
+        // console.log(updatedUser);
+        return updatedUser;
+    }catch(e){
+        console.log(e);
+        return e;
+    }
+}
+

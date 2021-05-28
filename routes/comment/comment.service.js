@@ -17,3 +17,10 @@ exports.createcomment=async (userProfileId,postId,description)=>{
     const output=await newcomment.save();
     return output;
 }
+
+exports.getpostcomment=async (userProfileId,postId,page,offset)=>{
+       let skip=page*offset+2;
+        const postcomment=await commentModel.find({postId:postId}).populate('profileId').skip(skip).limit(offset).exec();
+        return postcomment;
+
+}

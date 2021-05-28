@@ -47,6 +47,16 @@ const profileSchema = new Schema({
     requestSent: {
         type: [{ type: Schema.Types.ObjectId, ref: 'profile' }]
 
+    },
+    profileCount:{
+        type:Number,
+        default:0
+    },
+    designation:{
+        type:String,
+    },
+    website:{
+        type:String,
     }
 
 

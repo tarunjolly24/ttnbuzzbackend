@@ -22,3 +22,17 @@ exports.createcomment=async (req,res)=>{
         res.send(e);
     }
 }
+
+
+exports.getpostcomment=async (req,res)=>{
+    try{
+        const userProfileId=req.user.user.profileId;
+        const postId=req.body.postId;
+        const page=req.body.page;
+        const offset=req.body.offset;
+        const response=await commentServices.getpostcomment(userProfileId,postId,page,offset);
+        res.send(response);
+    }catch(e){
+        res.send(e);
+    }
+}
