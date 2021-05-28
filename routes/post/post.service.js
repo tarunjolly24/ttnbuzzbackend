@@ -83,9 +83,13 @@ exports.createpost = async function (userProfileId, data, imageurl) {
         createdBy: userProfileId,
         createdOn: new Date(),
     }
+    const profile=await profileModel.findOne({_id:userProfileId});
 
     let newPost = new postModel(post);
     const savePost = await newPost.save();
+    // const newsavepost=await savepost.populate('createdBy').exec();
+    savePost.createdBy=profile;
+    console.log(savePost);
     return savePost;
 
 }

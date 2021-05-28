@@ -56,7 +56,7 @@ exports.createpost = async function (req, res) {
                 console.log(imageurl);
                 const ress = await postService.createpost(userProfileId,data,imageurl);
 
-                res.json({ results, ress })
+                res.json(ress)
 
             })
             .catch((err) => {
