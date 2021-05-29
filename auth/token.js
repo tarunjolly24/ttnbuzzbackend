@@ -13,7 +13,7 @@ exports.generateUserToken=function generateUserToken(req, res) {
         algorithm: "HS256",
         expiresIn: '1 day'
     })
-    // console.log(accessToken);
+    console.log(accessToken);
     res.cookie("jwt",accessToken);
     res.redirect(`http://localhost:3000/feed`);
 }

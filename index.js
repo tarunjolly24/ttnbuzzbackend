@@ -35,7 +35,7 @@ const PORT =process.env.PORT;
 const app = express();
 app.use(express.json())
 app.use(formData.parse())
-app.use(helmet());
+// app.use(helmet());
 app.use(passport.initialize());
 app.use(cors());
 
