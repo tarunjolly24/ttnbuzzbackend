@@ -3,10 +3,12 @@ const {userModel}=require('./UserModel');
 const {profileModel}=require('./profileModel');
 const {postModel}=require('./postModel');
 const {commentModel}=require('./commentModel');
-
-mongoose.connect("mongodb://localhost:27017/testing",{
+const dotenv = require('dotenv');
+dotenv.config();
+// mongodb://localhost:27017/testing
+// mongodb+srv://root:<password>@cluster0.bm7sn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+mongoose.connect(`mongodb+srv://${process.env.dbuser}:${process.env.dbpassword}@cluster0.bm7sn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,{
     useNewUrlParser:true,
-
 });
 
 mongoose.connection.on('error',(err)=>{

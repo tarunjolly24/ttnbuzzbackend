@@ -11,10 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "cloudinary": "^1.25.1",
+    "cluster": "^0.7.7",
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "express-form-data": "^2.0.16",
+    "helmet": "^4.6.0",
     "i": "^0.3.6",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.7",

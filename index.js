@@ -1,4 +1,5 @@
-const express = require('express');
+var cluster = require('cluster');
+var numCPUs = require('os').cpus().length;
 const dotenv = require('dotenv');
 const formData = require('express-form-data')
 var cloudinary = require('cloudinary');
@@ -7,17 +8,29 @@ var cors = require('cors')
 const { passport } = require('./Passport/passport');
 const { generateUserToken, verify } = require('./auth/token');
 const { mongoose } = require('./Database/connection');
+const express = require('express');
+dotenv.config();
+// console.log(process.env);
+
+
+if (cluster.isMaster) {
+  for (var i = 0; i < numCPUs; i++) {
+    // Create a worker
+    cluster.fork();
+  }
+} else {
+  // Workers share the TCP connection in this server
+
 //helmet 
 //catch 
 //cluster 
 
 cloudinary.config({
-  cloud_name: 'ddcgdnhqp',
-  api_key: '394153769529545',
-  api_secret: 'J0GftJkIy8CNtr99kasKroIwmC0'
+  cloud_name:process.env.cloud_name,
+  api_key:process.env.api_key,
+  api_secret:process.env.api_secret
 });
-dotenv.config();
-const port = 5000;
+const PORT =process.env.PORT;
 //process.env.PORT
 const app = express();
 app.use(express.json())
@@ -73,8 +86,11 @@ app.get('/', (req, res) => {
 //     res.send('Secure response from ' + JSON.stringify(req.user));
 //   }
 // );
+  // All workers use this port
 
-app.listen(port, () => {
-  console.log(`http://localhost:${port}`);
+
+app.listen(PORT, () => {
+  console.log(`http://localhost:${PORT}`);
 })
 
+}
