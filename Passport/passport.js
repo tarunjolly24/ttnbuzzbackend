@@ -44,23 +44,6 @@ passport.use(new GoogleStrategy({
                 // console.log('1');
 
 
-            //old code
-            // user.save(function (err, doc) {
-            //     let userProfile = {
-            //         firstName:profile._json.given_name,
-            //         lastName:profile._json.family_name,
-            //         email:profile._json.email,
-            //         profileImage:'https://res.cloudinary.com/ddcgdnhqp/image/upload/v1621531829/uxz2n8ntfpk2typowdig.jpg',
-            //         coverImage:'https://res.cloudinary.com/ddcgdnhqp/image/upload/v1621531988/nymoy1gqxspkji8x8ktn.png',
-            //     }
-            //     const newUserProfile=new profileModel(userProfile);
-            //     newUserProfile.save(async function(err,doc){
-            //         user.profileId=doc._id
-            //        const ab= await user.save();
-            //     //    console.log('1');
-            //     })
-            // })
-
         }
         // console.log('2');
         // console.log(user)
