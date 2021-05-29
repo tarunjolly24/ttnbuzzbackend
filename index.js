@@ -24,7 +24,7 @@ if (cluster.isMaster) {
 //helmet 
 //catch 
 //cluster 
-
+console.log(process.env.api_key);
 cloudinary.config({
   cloud_name:process.env.cloud_name,
   api_key:process.env.api_key,

@@ -6,7 +6,8 @@ const {commentModel}=require('./commentModel');
 const dotenv = require('dotenv');
 dotenv.config();
 // mongodb://localhost:27017/testing
-// mongodb+srv://root:<password>@cluster0.bm7sn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+//mongodb+srv://root:<password>@cluster0.bm7sn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
 mongoose.connect(`mongodb+srv://${process.env.dbuser}:${process.env.dbpassword}@cluster0.bm7sn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,{
     useNewUrlParser:true,
 });
