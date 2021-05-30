@@ -53,13 +53,13 @@ exports.generateUserToken=function generateUserToken(req, res) {
         domain:'localhost'
 
     });
-    res.cookie("jwt7",accessToken,{
-        httpOnly:true,
-        secure:false,
-        sameSite:'secure',
-        domain:'localhost'
+    // res.cookie("jwt7",accessToken,{
+    //     httpOnly:true,
+    //     secure:false,
+    //     sameSite:'secure',
+    //     domain:'localhost'
 
-    });
+    // });
     // res.cookie("jwt6",accessToken,{
     //     httpOnly:true,
     //     secure:process.env.NODE_ENV==='production',
