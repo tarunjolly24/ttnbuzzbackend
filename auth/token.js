@@ -18,6 +18,8 @@ exports.generateUserToken=function generateUserToken(req, res) {
     res.cookie("jwt",accessToken,{
         httpOnly:false,
         secure:false,
+        sameSite:'lax'
+
     });
     res.redirect(`http://localhost:3000/feed`);
 }
