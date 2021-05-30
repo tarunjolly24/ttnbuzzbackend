@@ -25,16 +25,16 @@ exports.generateUserToken=function generateUserToken(req, res) {
         secure:false,
         sameSite:'lax'
     });
-    // res.cookie("jwt2",accessToken,{
-    //     httpOnly:true,
-    //     secure:true,
-    //     sameSite:'none'
-    // });//working
+    res.cookie("jwt2",accessToken,{
+        httpOnly:true,
+        secure:true,
+        sameSite:'none'
+    });//working
 
-    // res.cookie("jwt4",accessToken,{
-    //     httpOnly:true,
-    //     sameSite:'lax'
-    // });//working
+    res.cookie("jwt4",accessToken,{
+        httpOnly:true,
+        sameSite:'lax'
+    });//working
 
     res.redirect(`http://localhost:3000/feed`);
 }
