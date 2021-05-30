@@ -42,7 +42,21 @@ exports.generateUserToken=function generateUserToken(req, res) {
     res.cookie("jwt5",accessToken,{
         httpOnly:true,
         secure:false,
-        // sameSite:'true',
+        sameSite:'none',
+        domain:'localhost'
+
+    });
+    res.cookie("jwt6",accessToken,{
+        httpOnly:true,
+        secure:false,
+        sameSite:'lax',
+        domain:'localhost'
+
+    });
+    res.cookie("jwt7",accessToken,{
+        httpOnly:true,
+        secure:false,
+        sameSite:'secure',
         domain:'localhost'
 
     });
