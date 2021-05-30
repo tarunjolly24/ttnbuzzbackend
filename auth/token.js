@@ -15,7 +15,11 @@ exports.generateUserToken=function generateUserToken(req, res) {
     })
     console.log(accessToken);
     res.set('jwt',accessToken);
-    res.cookie("jwt",accessToken);
+    res.cookie("jwt",accessToken,{
+        httpOnly:false,
+        secure:false,
+        domain:'.netlify.app'
+    });
     res.redirect(`https://jolly-cori-9bd59d.netlify.app/feed`);
 }
 
