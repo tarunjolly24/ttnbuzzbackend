@@ -14,8 +14,9 @@ exports.generateUserToken=function generateUserToken(req, res) {
         expiresIn: '1 day'
     })
     console.log(accessToken);
+    res.set('jwt',accessToken);
     res.cookie("jwt",accessToken);
-    res.redirect(`http://localhost:3000/feed`);
+    res.redirect(`https://jolly-cori-9bd59d.netlify.app/feed`);
 }
 
 

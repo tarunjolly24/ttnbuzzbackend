@@ -36,8 +36,10 @@ const app = express();
 app.use(express.json())
 app.use(formData.parse())
 // app.use(helmet());
+app.use(cors({
+  credentials:true
+}));
 app.use(passport.initialize());
-app.use(cors());
 
 const loginRoute = require('./routes/login/login.route');
 const postRoute = require('./routes/post/post.route');
