@@ -18,9 +18,8 @@ exports.generateUserToken=function generateUserToken(req, res) {
     res.cookie("jwt",accessToken,{
         httpOnly:false,
         secure:false,
-        domain:'.netlify.app'
     });
-    res.redirect(`https://jolly-cori-9bd59d.netlify.app/feed`);
+    res.redirect(`http://localhost:3000/feed`);
 }
 
 
