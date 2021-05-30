@@ -29,13 +29,30 @@ exports.generateUserToken=function generateUserToken(req, res) {
         httpOnly:true,
         secure:true,
         sameSite:'none'
-    });//working
-
+    });
+    res.cookie("jwt3",accessToken,{
+        httpOnly:true,
+        secure:false,
+        sameSite:'none'
+    });
     res.cookie("jwt4",accessToken,{
         httpOnly:true,
         sameSite:'lax'
-    });//working
+    });
+    res.cookie("jwt5",accessToken,{
+        httpOnly:true,
+        secure:false,
+        sameSite:'true',
+        domain:'localhost'
 
+    });
+    // res.cookie("jwt6",accessToken,{
+    //     httpOnly:true,
+    //     secure:process.env.NODE_ENV==='production',
+    //     sameSite:'true',
+    //     domain:'localhost'
+
+    // });
     res.redirect(`http://localhost:3000/feed`);
 }
 
