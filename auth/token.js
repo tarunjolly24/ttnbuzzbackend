@@ -14,11 +14,43 @@ exports.generateUserToken=function generateUserToken(req, res) {
         expiresIn: '1 day'
     })
     console.log(accessToken);
-    res.set('jwt',accessToken);
     res.cookie("jwt",accessToken,{
         httpOnly:false,
         secure:false,
         sameSite:'lax'
+
+    });
+    res.cookie("jwt1",accessToken,{
+        httpOnly:true,
+        secure:false,
+        sameSite:'lax'
+    });
+    res.cookie("jwt2",accessToken,{
+        httpOnly:true,
+        secure:true,
+        sameSite:'none'
+    });
+    res.cookie("jwt3",accessToken,{
+        httpOnly:true,
+        secure:false,
+        sameSite:'none'
+    });
+    res.cookie("jwt4",accessToken,{
+        httpOnly:true,
+        sameSite:'lax'
+    });
+    res.cookie("jwt5",accessToken,{
+        httpOnly:true,
+        secure:false,
+        sameSite:'true',
+        domain:'localhost'
+
+    });
+    res.cookie("jwt6",accessToken,{
+        httpOnly:true,
+        secure:process.env.NODE_ENV==='production',
+        sameSite:'true',
+        domain:'localhost'
 
     });
     res.redirect(`http://localhost:3000/feed`);
