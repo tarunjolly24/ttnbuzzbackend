@@ -30,11 +30,11 @@ exports.generateUserToken=function generateUserToken(req, res) {
         secure:true,
         sameSite:'none'
     });
-    // res.cookie("jwt3",accessToken,{
-    //     httpOnly:true,
-    //     secure:false,
-    //     sameSite:'none'
-    // });
+    res.cookie("jwt3",accessToken,{
+        httpOnly:true,
+        secure:false,
+        sameSite:'none'
+    });
     res.cookie("jwt4",accessToken,{
         httpOnly:true,
         sameSite:'lax'
