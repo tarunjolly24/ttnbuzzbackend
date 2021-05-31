@@ -17,42 +17,41 @@ exports.generateUserToken=function generateUserToken(req, res) {
     res.cookie("jwt",accessToken,{
         httpOnly:false,
         secure:false,
-        sameSite:'lax'
+        credentials:true
+    });
+    // res.cookie("jwt1",accessToken,{
+    //     httpOnly:true,
+    //     secure:false,
+    //     sameSite:'lax'
+    // });
+    // res.cookie("jwt2",accessToken,{
+    //     httpOnly:true,
+    //     secure:true,
+    //     sameSite:'none'
+    // });
+    // res.cookie("jwt3",accessToken,{
+    //     httpOnly:true,
+    //     secure:false,
+    //     sameSite:'none'
+    // });
+    // res.cookie("jwt4",accessToken,{
+    //     httpOnly:true,
+    //     sameSite:'lax'
+    // });
+    // res.cookie("jwt5",accessToken,{
+    //     httpOnly:true,
+    //     secure:false,
+    //     sameSite:'none',
+    //     domain:'localhost'
 
-    });
-    res.cookie("jwt1",accessToken,{
-        httpOnly:true,
-        secure:false,
-        sameSite:'lax'
-    });
-    res.cookie("jwt2",accessToken,{
-        httpOnly:true,
-        secure:true,
-        sameSite:'none'
-    });
-    res.cookie("jwt3",accessToken,{
-        httpOnly:true,
-        secure:false,
-        sameSite:'none'
-    });
-    res.cookie("jwt4",accessToken,{
-        httpOnly:true,
-        sameSite:'lax'
-    });
-    res.cookie("jwt5",accessToken,{
-        httpOnly:true,
-        secure:false,
-        sameSite:'none',
-        domain:'localhost'
+    // });
+    // res.cookie("jwt6",accessToken,{
+    //     httpOnly:true,
+    //     secure:false,
+    //     sameSite:'lax',
+    //     domain:'localhost'
 
-    });
-    res.cookie("jwt6",accessToken,{
-        httpOnly:true,
-        secure:false,
-        sameSite:'lax',
-        domain:'localhost'
-
-    });
+    // });
     // res.cookie("jwt7",accessToken,{
     //     httpOnly:true,
     //     secure:false,

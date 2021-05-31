@@ -49,6 +49,9 @@ exports.updateUserProfile=async function(userDetailsToUpdate){
     getUser.state=userDetailsToUpdate.state;
     getUser.profileImage=userDetailsToUpdate.profileImage;
     getUser.coverImage=userDetailsToUpdate.coverImage;
+    getUser.designation=userDetailsToUpdate.designation;
+    getUser.website=userDetailsToUpdate.website;
+    getUser.about=userDetailsToUpdate.about;
     return await getUser.save();
     }
     catch(e){
