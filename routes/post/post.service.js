@@ -7,9 +7,9 @@ exports.getflaggedpost = async function () {
         let arrOfpostId = allpost.map((eachpost) => {
             return eachpost._id;
         })
-        console.log(arrOfpostId);
+        // console.log(arrOfpostId);
         const comments = await commentModel.find({ postId: { $in: arrOfpostId } }).populate('profileId').lean().exec();
-        console.log(comments);
+        // console.log(comments);
         for (let i = 0; i < allpost.length; i++) {
             allpost[i].comment = [];
             let count = 0;
@@ -26,7 +26,7 @@ exports.getflaggedpost = async function () {
 
             }
         }
-        console.log('print all post',allpost);
+        // console.log('print all post',allpost);
         return allpost;
         
         // return posts;
@@ -47,9 +47,9 @@ exports.getallpost = async function (userProfileId, page) {
         let arrOfpostId = allpost.map((eachpost) => {
             return eachpost._id;
         })
-        console.log(arrOfpostId);
+        // console.log(arrOfpostId);
         const comments = await commentModel.find({ postId: { $in: arrOfpostId } }).populate('profileId').lean().exec();
-        console.log(comments);
+        // console.log(comments);
         for (let i = 0; i < allpost.length; i++) {
             allpost[i].comment = [];
             let count = 0;
@@ -66,11 +66,11 @@ exports.getallpost = async function (userProfileId, page) {
 
             }
         }
-        console.log('print all post',allpost);
+        // console.log('print all post',allpost);
         return allpost;
     }
     catch (e) {
-        console.log(e);
+        // console.log(e);
         return e;
     }
 }
@@ -89,7 +89,7 @@ exports.createpost = async function (userProfileId, data, imageurl) {
     const savePost = await newPost.save();
     // const newsavepost=await savepost.populate('createdBy').exec();
     savePost.createdBy=profile;
-    console.log(savePost);
+    // console.log(savePost);
     return savePost;
 
 }
@@ -177,7 +177,18 @@ exports.deletepost = async function (userProfileId, postId) {
     return post;
 }
 
+exports.postcount=async function(userProfileId){
+    try{
+    const post =await postModel.count({createdBy:userProfileId});
+    // console.log('line 183' ,post);
+    return post;
+    }
+    catch(e){
+    console.log('line 187' ,e);
 
+        return e;
+    }
+}
 
 
 

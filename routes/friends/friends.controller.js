@@ -28,13 +28,14 @@ exports.sentrequest = async function (req, res) {
 }
 exports.showsuggestions = async function (req, res) {
     try {
-        console.log('line 31', req.user);
+        // console.log('line 31', req.user);
         let userProfileId = req.user.user.profileId;
-        console.log('userProfileId', userProfileId);
+        // console.log('userProfileId', userProfileId);
         const response = await friendService.showsuggestions(userProfileId);
-        console.log('line 35', response);
+        // console.log('line 35', response);
         res.send(response);
     } catch (e) {
+        console.log('error 38',e);
         res.send(e);
     }
 

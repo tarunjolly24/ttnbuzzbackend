@@ -30,7 +30,8 @@ exports.getpostcomment=async (req,res)=>{
         const postId=req.body.postId;
         const page=req.body.page;
         const offset=req.body.offset;
-        const response=await commentServices.getpostcomment(userProfileId,postId,page,offset);
+        const minustwo=req.body.minustwo;
+        const response=await commentServices.getpostcomment(userProfileId,postId,page,offset,minustwo);
         res.send(response);
     }catch(e){
         res.send(e);

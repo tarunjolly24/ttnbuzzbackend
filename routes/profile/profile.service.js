@@ -1,4 +1,6 @@
+var mongoose = require('mongoose'); 
 const { profileModel } = require('../../Database/profileModel');
+
 
 exports.getProfile = async function (profileId) {
     // console.log(profileId);
@@ -11,7 +13,8 @@ exports.getProfile = async function (profileId) {
             return null;
         }
     } catch (e) {
-        throw new Error("not found");
+        console.log('line 14',e);
+        throw new Error(e);
     }
 
 }
@@ -29,7 +32,7 @@ exports.anyUserProfile = async function (profileId) {
         }
     }
     catch (e) {
-        throw new Error("not found");
+        throw new Error(e);
     }
 
 }
@@ -74,14 +77,20 @@ exports.imageupload=async (userProfileId,imageurl)=>{
 
 exports.profileCount=async (userprofileId,receiverProfileId)=>{
     try{
-        const user=await profileModel.findOne({_id:receiverProfileId});
+        // console.log(typeof receiverProfileId);
+        // console.log(receiverProfileId);
+
+        var id = mongoose.Types.ObjectId(receiverProfileId);
+        // console.log(id);
+
+        const user=await profileModel.findOne({_id:id});
         // console.log(user);
         user.profileCount=user.profileCount+1;
         const updatedUser=await user.save();
         // console.log(updatedUser);
         return updatedUser;
     }catch(e){
-        console.log(e);
+        // console.log('line 84 aaa',e);
         return e;
     }
 }

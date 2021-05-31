@@ -36,11 +36,11 @@ exports.createpost = async function (req, res) {
         const userProfileId = req.user.user.profileId
         const data = req.body.description;
         // const image = Object.values(req.files);
-        console.log('data 22', data);
+        // console.log('data 22', data);
         // console.log('imagee 23 ', image);
         const values = Object.values(req.files)
-        console.log(values);
-        console.log(values.length);
+        // console.log(values);
+        // console.log(values.length);
 
         let imageurl='';
         if(values.length===0){
@@ -52,8 +52,8 @@ exports.createpost = async function (req, res) {
         Promise.all(promises)
             .then(async (results) => {
                 imageurl = results[0].url;
-                console.log(results);
-                console.log(imageurl);
+                // console.log(results);
+                // console.log(imageurl);
                 const ress = await postService.createpost(userProfileId,data,imageurl);
 
                 res.json(ress)
@@ -164,6 +164,16 @@ exports.deletepost = async function (req, res) {
 }
 
 
+exports.postcount=async function(req,res){
+    try{
+        const userProfileId=req.user.user.profileId;
+        const response=await postService.postcount(userProfileId);
+        // console.log('line 172', response);
+        res.json({response});
+    }catch(e){
+        res.send(e);
+    }
+}
 
 
 

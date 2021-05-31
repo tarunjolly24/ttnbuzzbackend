@@ -13,6 +13,6 @@ router.post('/dislikepost',verify,postController.dislikepost);
 router.post('/unflagpost',verify,postController.unflagpost);
 router.post('/deletepost',verify,postController.deletepost);
 router.get('/getflagpost',verify,postController.getflaggedpost);
-
+router.get('/postcount',verify,postController.postcount);
 
 module.exports=router

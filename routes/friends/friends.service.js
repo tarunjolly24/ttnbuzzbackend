@@ -4,7 +4,7 @@ exports.getallfriends = async function (userprofileId) {
 
     try {
         const allfriends = await profileModel.findOne({ _id: userprofileId }).populate('friendsList').exec();
-        console.log(allfriends);
+        // console.log(allfriends);
         return allfriends.friendsList;
     } catch (e) {
         throw new Error("something went wrong to get all friends");
@@ -32,7 +32,7 @@ exports.sentrequest = async function (userProfileId, receiverProfileId) {
 exports.showsuggestions = async function (userProfileId) {
     try {
         const user = await profileModel.findOne({ _id: userProfileId }).lean();
-        console.log('user',user);
+        // console.log('user',user);
         const friendlist = user.friendsList;
         const requestSent=user.requestSent;
         const requestList=user.requestList;
