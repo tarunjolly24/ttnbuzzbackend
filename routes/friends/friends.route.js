@@ -26,5 +26,7 @@ router.post('/acceptrequest',verify,friendController.acceptRequest);
 //to reject a friend request
 router.post('/rejectrequest',verify,friendController.rejectrequest);
 
+//to remove a friend
+router.post('/removefriend',verify,friendController.removefriend);
 
 module.exports=router

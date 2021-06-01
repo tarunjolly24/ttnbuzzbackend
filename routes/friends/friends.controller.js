@@ -83,3 +83,16 @@ exports.rejectrequest = async function (req, res){
         res.send(e);
     }
 }
+
+exports.removefriend=async function(req,res){
+    try{
+        let userProfileId=req.user.user.profileId;
+        let receiverProfileId=req.body.receiverProfileId;
+        console.log(receiverProfileId);
+        const resa=await friendService.removefriend(userProfileId,receiverProfileId);
+        res.send(resa);
+    }catch(e){
+        console.log(e);
+        res.status(400).send(e);
+    }
+}

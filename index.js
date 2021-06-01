@@ -10,7 +10,6 @@ const { generateUserToken, verify } = require('./auth/token');
 const { mongoose } = require('./Database/connection');
 const express = require('express');
 dotenv.config();
-// console.log(process.env);
 
 
 if (cluster.isMaster) {
@@ -24,14 +23,13 @@ if (cluster.isMaster) {
 //helmet 
 //catch 
 //cluster 
-console.log(process.env.api_key);
+// console.log(process.env.api_key);
 cloudinary.config({
   cloud_name:process.env.cloud_name,
   api_key:process.env.api_key,
   api_secret:process.env.api_secret
 });
 const PORT =process.env.PORT;
-//process.env.PORT
 const app = express();
 app.use(express.json())
 app.use(formData.parse())
@@ -40,7 +38,7 @@ app.use(cors({
   credentials:true
 }));
 app.use(passport.initialize());
-
+app.use(express.static('public'));
 const loginRoute = require('./routes/login/login.route');
 const postRoute = require('./routes/post/post.route');
 const profileRoute = require('./routes/profile/profile.route');

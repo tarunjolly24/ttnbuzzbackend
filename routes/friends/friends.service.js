@@ -14,12 +14,18 @@ exports.getallfriends = async function (userprofileId) {
 exports.sentrequest = async function (userProfileId, receiverProfileId) {
     try {
         const userA = await profileModel.findOne({ _id: userProfileId });
+       let idx=userA.requestSent.indexOf(receiverProfileId);
+       if(idx==-1)
         userA.requestSent.push(receiverProfileId);
+
         const res = await userA.save();
 
 
         const userB = await profileModel.findOne({ _id: receiverProfileId });
+        idx=userB.requestList.indexOf(userProfileId);
+        if(idx==-1)
         userB.requestList.push(userProfileId);
+
         const reso = await userB.save();
         return { res, reso };
 
@@ -74,15 +80,21 @@ exports.acceptRequest=async function(userProfileId,receiverProfileId){
         // console.log(userProfileId,receiverProfileId)
         const userA=await profileModel.findOne({_id:userProfileId});
         // console.log('userA',userA);
+        let check=userA.friendsList.indexOf(receiverProfileId);
+        if(check==-1)
         userA.friendsList.push(receiverProfileId);
+
         let idx=userA.requestList.indexOf(receiverProfileId);
         userA.requestList.splice(idx,1);
         // console.log('userA see',userA);
 
         const userB=await profileModel.findOne({_id:receiverProfileId});
         // console.log('userB',userB);
+        check=userB.friendsList.indexOf(userProfileId);
 
+        if(check==-1)
         userB.friendsList.push(userProfileId);
+
         idx=userB.requestSent.indexOf(userProfileId);
         userB.requestSent.splice(idx,1);
        const updatedUserA= await userA.save();
@@ -103,11 +115,15 @@ exports.rejectrequest=async (userProfileId,receiverProfileId)=>{
     try{
     const userA=await profileModel.findOne({_id:userProfileId});
     let idx=userA.requestList.indexOf(receiverProfileId);
+    
+    if(idx>-1)
     userA.requestList.splice(idx,1); 
 
     const userB=await profileModel.findOne({_id:receiverProfileId});
     idx=userB.requestSent.indexOf(userProfileId);
+    if(idx>-1)
     userB.requestSent.splice(idx,1);
+
     const updatedUserA= await userA.save();
 
     const updatedUserB= await userB.save();
@@ -121,3 +137,30 @@ exports.rejectrequest=async (userProfileId,receiverProfileId)=>{
 
 
 }
+
+exports.removefriend=async (userProfileId,receiverProfileId)=>{
+    try{
+        const userA=await profileModel.findOne({_id:userProfileId});
+        let idx=userA.friendsList.indexOf(receiverProfileId);
+        if(idx>-1){
+            userA.friendsList.splice(idx,1);
+        }
+        const updatedUserA=await userA.save();
+
+        
+        const userB=await profileModel.findOne({_id:receiverProfileId});
+         idx=userB.friendsList.indexOf(userProfileId);
+        if(idx>-1){
+            userB.friendsList.splice(idx,1);
+        }
+        const updatedUserB=await userB.save();
+        return{updatedUserA,updatedUserB};
+        
+
+    }catch(e){
+        throw new Error(e);
+    }
+
+
+}
+
