@@ -19,7 +19,8 @@ exports.createcomment=async (userProfileId,postId,description)=>{
 }
 
 exports.getpostcomment=async (userProfileId,postId,page,offset,minustwo)=>{
-       let skip=page*offset+2-minustwo;
+    // console.log('line 22',typeof minustwo);
+       let skip=page*offset+2-parseInt(minustwo);
         const postcomment=await commentModel.find({postId:postId}).populate('profileId').skip(skip).limit(offset).exec();
         return postcomment;
 
