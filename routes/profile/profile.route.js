@@ -7,5 +7,6 @@ router.post('/userprofileupdate',verify,profileController.updateUserProfile)
 router.post('/profilecount',verify,profileController.profileCount);
 
 router.post('/image-upload',verify,profileController.imageupload);
+router.post('/image-upload-coverImage',verify,profileController.imageuploadCover);
 
 module.exports=router

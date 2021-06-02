@@ -74,6 +74,16 @@ exports.imageupload=async (userProfileId,imageurl)=>{
         return new Error(e);
     }
 }
+exports.imageuploadCover=async (userProfileId,imageurl)=>{
+    try{
+        const user=await profileModel.findOne({_id:userProfileId});
+        user.coverImage=imageurl;
+        const updateduser= await user.save();
+        return updateduser;
+    }catch(e){
+        return new Error(e);
+    }
+}
 
 exports.profileCount=async (userprofileId,receiverProfileId)=>{
     try{
